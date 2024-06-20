@@ -21,6 +21,9 @@ end)
 vim.keymap.set({ 'n', 'v' }, '<Leader>p', function ()
     vim.cmd('norm! "+p')
 end)
+vim.keymap.set({ 'n', 'v' }, '<Leader>d', function ()
+    vim.cmd('norm! "+d')
+end)
 
 -- No clue why these need to be their own functions, but they don't work otherwise ._.
 vim.keymap.set('n', 'u', function()
