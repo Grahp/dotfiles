@@ -14,19 +14,11 @@ vim.keymap.set('n', 'gB', 'gE')
 vim.keymap.set('n', 'J', 'gj')
 vim.keymap.set('n', 'K', 'gk')
 
--- vim.keymap.set('n', 'j', 'jzz')
--- vim.keymap.set('n', 'k', 'kzz')
-
 vim.keymap.set('n', '<CR>', 'o<Esc>')
 vim.keymap.set('n', '<S-CR>', 'O<Esc>')
 
 vim.keymap.set({ 'n', 'v'}, 'gj', 'G')
 vim.keymap.set({ 'n', 'v'}, 'gk', 'gg')
-
--- vim.keymap.set({ 'n', 'v', 'i' }, '<Up>', '<Nop>')
--- vim.keymap.set({ 'n', 'v', 'i' }, '<Down>', '<Nop>')
--- vim.keymap.set({ 'n', 'v', 'i' }, '<Left>', '<Nop>')
--- vim.keymap.set({ 'n', 'v', 'i' }, '<Right>', '<Nop>')
 
 vim.keymap.set({ 'n', 'v' }, 'G', '<Nop>')
 vim.keymap.set({ 'n', 'v' }, 'gg', '<Nop>')

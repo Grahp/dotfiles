@@ -53,10 +53,6 @@ return {
 
             cmp.setup({
 
-                -- completion = {
-                --     completeopt = 'menu,menuone,preview, noselect'
-                -- },
-
                 snippet = {
                     expand = function(args)
                         require('luasnip').lsp_expand(args.body)

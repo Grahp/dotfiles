@@ -116,33 +116,6 @@ function toggleCheckbox()
 
 end
 
--- function addToJournal()
---
---     local time = os.date('%I:%M %p'):gsub('^0', '')
---     vim.fn.feedkeys('/# Food\n:echo ""\nkO- **' .. time .. '** ', 'n')
---
--- end
-
-
--- function addToJournal()
---
---     local time = os.date('%I:%M %p'):gsub('^0', '')
---
---     local save_cursor = vim.fn.getpos('.')
---     local search_result = vim.fn.search('# Food', 'n')
---
---     if search_result ~= 0 then
---         vim.fn.setpos('.', save_cursor)
---         vim.cmd(search_result .. 'normal! kk')
---         vim.fn.feedkeys('o- **' .. time .. '** ', 'n')
---     end
---
---
--- end
-
-
-
-
 function insertTime()
         local time = os.date('%I:%M %p'):gsub('^0', '')
         vim.fn.feedkeys('i **' .. time .. '** ')

@@ -15,7 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('hotkeys')
 
--- require('lazy').setup('plugins')
 require('lazy').setup({
     spec = 'plugins',
     change_detection = { notify = false }
@@ -24,4 +23,3 @@ require('lazy').setup({
 require('options')
 require('quartz')
 require('markdown')
--- require('snippets')
