@@ -1,5 +1,6 @@
-.zsh_history
-.zcompdump
+# Zsh
+zsh/.config/zsh/.zsh_history
+zsh/.config/zsh/.zcompdump
 
 # Plover
 plover/.config/plover/clippy.txt
@@ -12,4 +13,5 @@ plover/.config/plover/hidden.json
 plover/.config/plover/.cache/
 plover/.config/plover/__pycache__/
 plover/.config/plover/plugins/
+# Well, I know what's in this one
 plover/.config/plover/state/
