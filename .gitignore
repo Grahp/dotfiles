@@ -1,2 +1,15 @@
 .zsh_history
 .zcompdump
+
+# Plover
+plover/.config/plover/clippy.txt
+plover/.config/plover/plover.log
+plover/.config/plover/plover.log.1
+# Unsorted entries
+plover/.config/plover/unsorted.json
+plover/.config/plover/hidden.json
+# Idk what's in these, so they're outta here
+plover/.config/plover/.cache/
+plover/.config/plover/__pycache__/
+plover/.config/plover/plugins/
+plover/.config/plover/state/
