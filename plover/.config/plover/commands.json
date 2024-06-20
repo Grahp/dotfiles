@@ -1,5 +1,6 @@
 {
 "STPH-R": "{#Left}{^}",
+"^": "=repeat_last_translation",
 "STPH-RB": "{#Control_L(Left)}{^}",
 "STPH-P": "{#Up}{^}",
 "STPH-B": "{#Down}{^}",
@@ -46,5 +47,22 @@
 "PHROLG": "{PLOVER:TOGGLE}",
 "R*R": "{#Return}{^}",
 "R-R": "{^~|\n^}",
-"*UPD": "{*<}"
+"*UPD": "{*<}",
+"SHR-BG": "{^}{#Super_L(o)}",
+"TH-FL": "{*-|}",
+"PR-R": "{.}{^~|\n^}",
+"PR-RP": "{.}{^~|\n^}{-|}",
+"R-RP": "{^~|\n^}{-|}",
+"PH": "{#Backspace}",
+"PR-R": "{^~|\n^}{-|}",
+"SKPA": "{^}{-|}",
+"PR*PB": "{~|)^}",
+"PR-PB": "{~|)^}",
+"*RBG": "{#Shift(Tab)}",
+"-FPL": "{#Escape}{^}",
+"-RBG": "{^}{#Tab}{^}",
+"^": "=repeat_last_translation",
+"SHR-BG": "{^}{#Super_L(o)}",
+"TH-FL": "{*-|}",
+"R-RP": "{^~|\n^}{-|}"
 }
