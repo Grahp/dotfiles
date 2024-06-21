@@ -134,11 +134,16 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 assign [class="Mullvad VPN"] workspace 8
+assign [class="Plover"] workspace 4
+assign [class="PolyMC"] workspace 6
 
 
 # Start apps
 
-# exec --no-startup-id i3-msg 'workspace $ws1; exec wezterm'
+exec ~/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh
+exec ~/Applications/plover-4.0.0rc2+6.g53c416f-x86_64_5c6089eb07b1d3f7f0016644e69179ce.AppImage
+exec --no-startup-id i3-msg 'workspace $ws3; exec kitty tmux attach-session -t Notes'
+exec --no-startup-id i3-msg 'workspace $ws1; exec kitty tmux attach-session -t Dotfiles'
 
 
 
