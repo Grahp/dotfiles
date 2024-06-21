@@ -2,12 +2,39 @@
 
 import re
 
+# Options
+AUTOMATIC_ZEROS = True
+STARTER = '#' # Can be set to anything with ^+#S, the rest is used elsewhere
+
+# Strokes Dict
+# ^#T12* *1212D
+# +SK34* *3434Z
+#     12 34
+NUMBERS_DICT = {
+    '2':    '1',
+    '4':    '3',
+    '12':   '4',
+    '1234': '5',
+    '24':   '2',
+    '34':   '6',
+    '1':    '7',
+    '13':   '8',
+    '3':    '9',
+    '14':   '.',
+    '23':   ','
+}
+
+PREFIXES = {
+    'TK': '$'
+}
+
+
 LONGEST_KEY = 1
 
 def stroke_to_numbers(letters: str, stroke: str) -> str:
     letter_to_number = {letter: str(index + 1) for index, letter in enumerate(letters)}
     
-    new_stroke = []
+    new_stroke: list[str] = []
     for char in stroke:
         new_stroke.append(letter_to_number.get(char, char))
     
@@ -23,6 +50,13 @@ def convert_numbers_to_strokes(stroke: str) -> str:
         stroke = "#" + "".join(stroke_list)
     return stroke
 
+def numbers_check(numbers: str):
+    if numbers in NUMBERS_DICT:
+        return NUMBERS_DICT[numbers]
+    elif len(numbers) == 3:
+        return '0'
+    return ''
+
 
 
 def lookup(chord: list[str]):
@@ -33,55 +67,36 @@ def lookup(chord: list[str]):
 
     stroke = convert_numbers_to_strokes(stroke)
 
-    numbers_dict  = {
-        '2':    '1',
-        '24':   '2',
-        '4':    '3',
-        '12':   '4',
-        '1234': '5',
-        '34':   '6',
-        '1':    '7',
-        '13':   '8',
-        '3':    '9',
-        '14':   '.',
-        '23':   ','
-    }
-
     # Split stroke into groups
-    match = re.fullmatch(r'([#]*)(\+?S?)(T?K?)(P?W?H?R?)(A?O?E?U?)([-*]?)([FRPB]*)([LGTS]*)', stroke)
+    match = re.fullmatch(r'(#?\+?S?)(T?K?)(P?W?H?R?)(A?O?E?U?)([-*]?)([FRPB]*)([LGTS]*)', stroke)
     if match is None:
         raise KeyError
 
     numpad: list[str] = [''] * 4
 
-    (starter, _, _prefix, numpad[0], numpad[1], _, numpad[2], numpad[3]) = match.groups()
+    (starter, prefix, numpad[0], numpad[1], _, numpad[2], numpad[3]) = match.groups()
     
-    if '#' not in starter:
+    if STARTER not in starter:
         raise KeyError
 
-    numpad_numbers = [ 'PWHR', 'AOEU', 'FRPB', 'LGTS' ]
+    NUMPAD_NUMBERS = [ 'PWHR', 'AOEU', 'FRPB', 'LGTS' ]
 
     output = ''
+
+    if prefix in PREFIXES:
+        output += PREFIXES[prefix]
     
     previous_non_empty = False
 
-    for i in range(4):
+    for i in range(len(NUMPAD_NUMBERS)):
         if numpad[i] == '':
-            if previous_non_empty:
+            if previous_non_empty and AUTOMATIC_ZEROS:
                 output += '0'
             continue
 
-        numbers = stroke_to_numbers(numpad_numbers[i], numpad[i])
+        numbers = stroke_to_numbers(NUMPAD_NUMBERS[i], numpad[i])
 
-        def numbers_check(numbers: str):
-            if numbers in numbers_dict:
-                return numbers_dict[numbers]
-            elif len(numbers) == 3:
-                return '0'
-            return ''
-
-        current_output = numbers_check(numbers)
-        output += current_output
+        output += numbers_check(numbers)
         previous_non_empty = True
 
     return output
