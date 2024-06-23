@@ -6,6 +6,7 @@ source $ZDOTDIR/plugins/path.zsh
 source $ZDOTDIR/plugins/syntax.zsh
 source $ZDOTDIR/plugins/suggestions.zsh
 source $ZDOTDIR/plugins/completion.zsh
+source $ZDOTDIR/plugins/env.zsh
 
 # Set Terminal Prompt
 PS1=$'%F{blue}%~ %F{white}󱦰 '
