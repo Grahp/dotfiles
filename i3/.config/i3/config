@@ -51,10 +51,10 @@ bindsym $mod+Shift+N move up
 bindsym $mod+Shift+S move right
 
 # Split Vertically
-bindsym $mod+d split h
+# bindsym $mod+d split h
 
 # Split Horizontally
-bindsym $mod+k split v
+# bindsym $mod+k split v
 
 # Enter Fullscreen
 bindsym $mod+u fullscreen toggle
@@ -98,6 +98,29 @@ bindsym $mod+p mode "Edit"
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
 
+# Dunst
+
+bindsym $mod+c exec dunstctl close
+bindsym $mod+Shift+C exec dunstctl close-all
+
+bindsym $mod+g exec dunstctl history-pop
+
+
+
+# Screenshots
+
+bindsym $mod+m exec scrot ~/Pictures/$(date '+%Y-%m-%d_%H-%M-%S').png -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym $mod+w exec scrot -fs ~/Pictures/$(date '+%Y-%m-%d_%H-%M-%S').png -e 'xclip -selection clipboard -t image/png -i $f'
+
+
+# Brighness
+
+bindsym $mod+k exec --no-startup-id ~/.config/i3/brighness.sh up 10
+bindsym $mod+j exec --no-startup-id ~/.config/i3/brighness.sh down 10
+
+bindsym $mod+Shift+K exec --no-startup-id ~/.config/i3/brighness.sh set 100
+bindsym $mod+Shift+J exec --no-startup-id ~/.config/i3/brighness.sh set 10
+
 
 
 #
@@ -132,18 +155,19 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 exec --no-startup-id nm-applet
+exec --no-startup-id dunst
 
 assign [class="Mullvad VPN"] workspace 8
-assign [class="Plover"] workspace 4
+# assign [class="Plover"] workspace 4
 assign [class="PolyMC"] workspace 6
 
 
 # Start apps
 
-exec ~/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh
-exec ~/Applications/plover-4.0.0rc2+6.g53c416f-x86_64_5c6089eb07b1d3f7f0016644e69179ce.AppImage
-exec --no-startup-id i3-msg 'workspace $ws3; exec kitty tmux attach-session -t Notes'
-exec --no-startup-id i3-msg 'workspace $ws1; exec kitty tmux attach-session -t Dotfiles'
+# exec ~/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh
+# exec ~/Applications/plover-4.0.0rc2+6.g53c416f-x86_64_5c6089eb07b1d3f7f0016644e69179ce.AppImage
+# exec --no-startup-id i3-msg 'workspace $ws3; exec kitty tmux attach-session -t Notes'
+# exec --no-startup-id i3-msg 'workspace $ws1; exec kitty tmux attach-session -t Dotfiles'
 
 
 
