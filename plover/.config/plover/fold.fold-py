@@ -2,7 +2,7 @@ def init(f, FoldingRules):
     return FoldingRules([
 
         # Allows the substroke `*G` to be included in the last stroke to append "{^in'}".
-        f.when(f.last_stroke.folds("*G")).then(f.unfold_suffix),
+        # f.when(f.last_stroke.folds("*G")).then(f.append_to_translation("ing")),
 
         # Allows the `^` key to be included in every stroke to make the translation an affix,
         # or when the first stroke also includes `+`, then hyphenate it.
@@ -12,4 +12,6 @@ def init(f, FoldingRules):
         # Allows the `#` key to be included in the first stroke to capitalize a word.
         # E.g., `#KAP/TAL` => `{-|}capital` ("Capital")
         f.when(f.first_stroke.folds("+")).then(f.prepend_to_translation("{-|}")),
+
+        f.when(f.all_strokes.fold("~")).then(f.prepend_to_translation("a{^}")),
     ])
