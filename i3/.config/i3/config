@@ -109,8 +109,8 @@ bindsym $mod+g exec dunstctl history-pop
 
 # Screenshots
 
-bindsym $mod+m exec scrot ~/Pictures/$(date '+%Y-%m-%d_%H-%M-%S').png -e 'xclip -selection clipboard -t image/png -i $f'
-bindsym $mod+w exec scrot -fs ~/Pictures/$(date '+%Y-%m-%d_%H-%M-%S').png -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym $mod+m exec maim | tee ~/Pictures/$(date '+%Y-%m-%d_%H-%M-%S').png | xclip -selection clipboard -t image/png
+bindsym $mod+w exec maim -s | tee ~/Pictures/$(date '+%Y-%m-%d_%H-%M-%S').png | xclip -selection clipboard -t image/png
 
 
 # Brighness
@@ -141,8 +141,6 @@ new_window none
 new_float none
 
 
-# default_border pixel 1
-# default_floating_border pixel 1
 
 #
 # Startup
@@ -160,14 +158,6 @@ exec --no-startup-id dunst
 assign [class="Mullvad VPN"] workspace 8
 # assign [class="Plover"] workspace 4
 assign [class="PolyMC"] workspace 6
-
-
-# Start apps
-
-# exec ~/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh
-# exec ~/Applications/plover-4.0.0rc2+6.g53c416f-x86_64_5c6089eb07b1d3f7f0016644e69179ce.AppImage
-# exec --no-startup-id i3-msg 'workspace $ws3; exec kitty tmux attach-session -t Notes'
-# exec --no-startup-id i3-msg 'workspace $ws1; exec kitty tmux attach-session -t Dotfiles'
 
 
 
