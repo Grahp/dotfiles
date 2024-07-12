@@ -13,13 +13,13 @@ vim_file = os.path.join("/home/grahp/.config/plover/state", "vim_mode")
 
 # Writes String content to file
 # Returns: void
-def write_to_file(file_name, content):
+def write_to_fileIO(file_name, content):
     with open(file_name, 'w') as file:
         file.write(content)
 
 
 
-def read_file(file_name: os.path):
+def read_fileIO(file_name: os.path):
     try:
         with open(file_name, 'r') as file:
             return file.read()
@@ -29,40 +29,40 @@ def read_file(file_name: os.path):
 
 
 def vim_mode_enabled():
-    enabled = read_file(vim_file)
+    ENABLED = read_fileIO(vim_file)
 
-    if enabled == 'True':
+    if ENABLED == 'True':
         return True
 
-    if enabled == 'False':
+    if ENABLED == 'False':
         return False
 
     return None
 
 def enable_vim_mode():
-    write_to_file(vim_file, 'True')
+    write_to_fileIO(vim_file, 'True')
 
 def disable_vim_mode():
-    write_to_file(vim_file, 'False')
+    write_to_fileIO(vim_file, 'False')
 
 def log(string: str):
-    log_file = os.path.join("/home/grahp/.config/plover/state", "log")
-    write_to_file(log_file, string)
+    LOG_FILE = os.path.join("/home/grahp/.config/plover/state", "log")
+    write_to_fileIO(LOG_FILE, string)
 
 
 # Returns: void
 def toggle_vim_mode():
-    contents = read_file(vim_file)
+    CONTENTS = read_fileIO(vim_file)
 
-    if contents == None:
+    if CONTENTS == None:
         enable_vim_mode()
         return
 
-    if contents == 'True':
+    if CONTENTS == 'True':
         disable_vim_mode()
         return
 
-    if contents == 'False':
+    if CONTENTS == 'False':
         enable_vim_mode()
         return
     enable_vim_mode()
@@ -89,9 +89,6 @@ def lookup(chord: list[str]):
     # stroke = str(stroke)
 
     # Skip Stroke
-    if stroke == 'SKWR-R':
-        # return '{^}{#Super_L(3)}{^}{#Escape}{^ ^}on{^}{-|}'
-        return '{^}{#Super_L(3)}{PLOVER:DELAY:0.05}{^}{#Escape}{^ ^}on{^}{-|}'
     # {#Control_L(Shift(Left))}{^}
 
 
@@ -100,7 +97,7 @@ def lookup(chord: list[str]):
     # ALT_ENTER_CHORD = 'STPR'
 
     if stroke == VIM_ENTER_CHORD:
-        write_to_file(vim_file, 'True')
+        write_to_fileIO(vim_file, 'True')
 
         # Simulate Escape
         return '{#Escape}'
@@ -109,7 +106,7 @@ def lookup(chord: list[str]):
         raise KeyError
 
     if stroke == '*':
-        write_to_file(vim_file, 'False')
+        write_to_fileIO(vim_file, 'False')
         return '{#}' # Do nothing
     
     DICT = {
@@ -183,7 +180,6 @@ motions = {
 }
 
 # Overrides, for commands, and leaders and such
-# overs = {
-#     commands: [
-#
-#     ]
+overs = {
+    'SKWR-R': '{^}{#Super_L(3)}{PLOVER:DELAY:0.05}{^}{#Escape}{^ ^}on{^}{-|}'
+}
