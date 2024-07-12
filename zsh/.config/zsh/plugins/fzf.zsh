@@ -2,16 +2,14 @@
 
 files_home() {
 
-    selected=$(fdfind . '/home/grahp' -t d --hidden --exclude .git | sed 's|^/home/grahp/||' | fzf )
+    selected=$(fdfind . '/home/grahp' -t d --hidden --exclude .git -d 5 | sed 's/\/home\/grahp\///' | fzf )
 
     if [[ -z "$selected" ]]; then
         return
     else
 
-        if [ -d "$selected" ]; then
+        if [ -d ~/"$selected" ]; then
             cd ~/"$selected"
-        else
-            v ~/"$selected"
         fi
 
         kill -INT $$
@@ -21,13 +19,14 @@ files_home() {
 
 files_root() {
 
-    selected=$(fdfind . '/' --hidden --exclude .git | sed 's|^/||' | fzf )
+    # selected=$(fdfind . '/' --hidden --exclude .git | sed 's|^/||' | fzf )
+    selected=$(fdfind . '/' -t d --hidden --exclude .git -d 5 | sed 's/\///' | fzf )
 
     if [[ -z "$selected" ]]; then
         return
     else
 
-        if [ -d "$selected" ]; then
+        if [ -d /"$selected" ]; then
             cd /"$selected"
         else
             v /"$selected"
@@ -40,7 +39,9 @@ files_root() {
 
 files() {
 
-    selected=$(fdfind . --hidden --exclude .git | sed 's|^./||' | fzf )
+    # selected=$(fdfind . --hidden --exclude .git --exec sh -c 'if [ -d "$1" ]; then echo "$1/"; else echo "$1"; fi' sh {} | sed 's/\.///' | fzf )
+    selected=$(fdfind . --hidden --exclude .git --exec sh -c 'if [ -d "$1" ]; then echo "$1/"; else echo "$1"; fi' sh {} | sed 's/\.\///' | fzf)
+    # fd --exec sh -c 'if [ -d "$1" ]; then echo "$1/"; else echo "$1"; fi' sh {}
 
     if [[ -z "$selected" ]]; then
         return

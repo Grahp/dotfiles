@@ -6,8 +6,10 @@ alias b="cd .."
 alias l="lsd -ANF1tr --group-dirs first"
 alias c="cd"
 
-alias get="sudo apt install"
-alias remove="sudo apt remove"
+# alias get="sudo apt install"
+# alias remove="sudo apt remove"
+alias get="nix-env -iA nixpkgs.$@"
+alias remove="nix-env --uninstall $@"
 
 alias v="nvim"
 alias lg="lazygit"
