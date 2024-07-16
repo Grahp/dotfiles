@@ -3,8 +3,12 @@ import re, os
 LONGEST_KEY = 1
 
 NUMBER_KEY = "#"
-NUMBER_STROKE = "#TPH"
-PERIOD_NUMBER_STROKE = "#P"
+
+STARTERS = {
+    "#TPH": "",
+    "#P": "0.",
+    "#TK": "$"
+}
 
 NUMPAD_1 = {
     "E" : "0",
@@ -58,11 +62,11 @@ def lookup(CHORD: tuple[str]):
     output = ""
 
     # Prefixes
-    if PERIOD_NUMBER_STROKE in LEFT_HAND:
-        output = "0."
-    elif NUMBER_STROKE in LEFT_HAND:
-        output = ""
+    for STARTER in STARTERS:
+        if STARTER in LEFT_HAND:
+            output += STARTERS[STARTER]
 
+    # Numpad Nonsense
     if GROUP_NUMPAD_1 in NUMPAD_1:
         output += NUMPAD_1[GROUP_NUMPAD_1]
         if GROUP_NUMPAD_2 is '':
