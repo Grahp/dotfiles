@@ -47,11 +47,11 @@ def lookup(CHORD: tuple[str]):
     if NUMBER_KEY not in STROKE:
         raise KeyError
 
-    MATCH = re.fullmatch(r'(#?S?T?K?P?W?H?R?)(A?O?E?U?)(?=[-*]|$)([-*]?)([FRPB])([LGTS]*)', STROKE)
+    MATCH = re.fullmatch(r'(#?S?T?K?P?W?H?R?)(A?O?E?U?)([-*]?)([FRPB]*)([LGTS]*)', STROKE)
     if MATCH is None:
         raise KeyError
 
-    (LEFT_HAND, VOWELS, SEPERATOR, GROUP_NUMPAD_0, GROUP_NUMPAD_0) = MATCH.groups()
+    (LEFT_HAND, VOWELS, SEPERATOR, GROUP_NUMPAD_0, GROUP_NUMPAD_1) = MATCH.groups()
 
     if UNFORMATTED_NUMBER in STROKE:
         if GROUP_NUMPAD_0 in NUMPAD_1:
