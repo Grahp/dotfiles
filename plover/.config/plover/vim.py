@@ -181,5 +181,5 @@ motions = {
 
 # Overrides, for commands, and leaders and such
 overs = {
-    'SKWR-R': '{^}{#Super_L(3)}{PLOVER:DELAY:0.05}{^}{#Escape}{^ ^}on{^}{-|}'
+        'SKWR-R': '{^}{#Super_L(3)}{PLOVER:DELAY:0.05}{^}{#Escape}{^ ^}on{^}{-|}'
 }

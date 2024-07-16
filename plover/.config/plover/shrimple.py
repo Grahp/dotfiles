@@ -4,13 +4,11 @@ Key considerations were that it wasn't tailored for English, as this is mostly f
 
 """
 
-# from desktop_notifier import DesktopNotifier
-
 starternormal = 'STK'           #shrimple with normal formatting
 starterattached='STKR'          #shrimple with not space at the start
 startercap    = 'SHR*EUFRPL'    #shrimple but capped the first letter
 acronyms      = 'KAPS'          #shrimple but all caps
-dedicated_key = '~'             #Instead of a starter stroke
+dedicated_key = '🦐'             #Instead of a starter stroke
 
 
 starter_letter={
@@ -32,6 +30,8 @@ starter_letter={
     "^TKR":"tc",
     "TP": "f",
     "TPH": "n",
+    "TPHR": "fl",
+    "^TPHR": "tpl",
     "^TKPH": "kn",
 
     "K":"k",
@@ -42,6 +42,7 @@ starter_letter={
     "KH":"ch",
     "KR":"c",
     "^KR":"cr",
+    "^KHR":"cl",
 
     "P":"p",
     "PW":"b",
@@ -117,6 +118,7 @@ ender_letter={
     "FRL":"ml",
     "FRBL":"mbl",
     "FP":"ch",
+    "*FP":"tch",
     "FB":"v",
     "FT":"st",
 
@@ -126,6 +128,7 @@ ender_letter={
     "P":"p",
     "PB":"n",
     "PBLG":"j",
+    "*PBLG":"dge",
     "PBG":"ng",
     "PL":"m",
     #PZ for h?
@@ -133,16 +136,19 @@ ender_letter={
     "B":"b",
     "BG":"k",
     "BGS":"x",
+    "*BGT":"ckt",
 
     "L":"l",
+    "*L":"ll",
 
     "G":"g",
     "GT":"xt",
+    "*GT":"gt",
     "GS":"tion", #Pretty English biased
 
     "T":"t",
     "TS":"ts",
-    "TZ":"se",
+    "TZ":"te",
 
     "S":"s", #might be some logic here for c? Realtime uses `SZ` for c
     "SD":"e",
@@ -431,11 +437,6 @@ def lookup(strokes):
         if stroke in strokes_you_can_use_to_exit_shrimple_with:
             raise KeyError
 
-        # if strokes[0] == '^':
-        #     return "=undo"
-
-        # notifier.send(title="Hello world!", message="Sent from Python")
-        
         match = re.fullmatch(r'(#?\^?S?T?K?P?W?H?R?)(A?O?)(\*?\-?E?U?)(F?R?P?B?L?G?T?S?D?Z?)', stroke.replace(dedicated_key,""))
         if match:
 

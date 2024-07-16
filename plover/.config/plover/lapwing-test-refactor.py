@@ -97,6 +97,9 @@ def main():
         file = '/home/grahp/.config/plover/grahpwing.json'
         alt_file = '/home/grahp/.config/plover/lapwing-base.json'
 
+        # alt_file = '/home/grahp/.config/plover/grahpwing.json'
+        # file = '/home/grahp/.config/plover/lapwing-base.json'
+
         # file = '/home/grahp/.config/plover/lapwing-base.json'
         # alt_file = '/home/grahp/.config/plover/main.json'
 

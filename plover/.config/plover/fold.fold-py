@@ -1,17 +1,22 @@
-def init(f, FoldingRules):
-    return FoldingRules([
+import plover_custom_folding as f
 
-        # Allows the substroke `*G` to be included in the last stroke to append "{^in'}".
-        # f.when(f.last_stroke.folds("*G")).then(f.append_to_translation("ing")),
+rules: list[f.Lookup] = [
+    # Allows the `#` key to be included in the first stroke to capitalize a word.
+    # E.g., `#KAP/TAL` => `{-|}capital` ("Capital")
+    f.when(f.first_stroke.folds("#")).then(f.prefix_translation("{-|}")),
 
-        # Allows the `^` key to be included in every stroke to make the translation an affix,
-        # or when the first stroke also includes `+`, then hyphenate it.
-        # E.g., `^PWUFT/^ER` => `{^}buster`
-        f.when(f.all_strokes.fold("^")).then(f.prepend_to_translation("{^}")),
+    f.when(f.first_stroke.folds("^")).then(f.prefix_translation("=retro_everything:,{^~|^}")),
 
-        # Allows the `#` key to be included in the first stroke to capitalize a word.
-        # E.g., `#KAP/TAL` => `{-|}capital` ("Capital")
-        f.when(f.first_stroke.folds("+")).then(f.prepend_to_translation("{-|}")),
+    # Allows the `-R` key to be included in the last stroke to append "{^er}".
+    # E.g., `SHEURPL` => `shim {^er}` ("shimmer")
+    f.when(f.last_stroke.folds("-R")).then(f.suffix_translation(" {^er}")),
 
-        f.when(f.all_strokes.fold("~")).then(f.prepend_to_translation("a{^}")),
-    ])
+    f.when(f.last_stroke.folds("*D")).then(f.suffix_translation("{^y}")),
+
+    # Allows the substrokes `-GS` or `-GZ` to be included in the last stroke to append "{^ings}".
+    # E.g., `WAUFPGS` => `watchings`
+    f.when(f.last_stroke.folds("-GS", "-GZ")).then(f.suffix_translation(" {^ings}")),
+]
+
+# Optional. The maximum length of the outline to check these folding rules for.
+LONGEST_KEY: int = 8

@@ -17,6 +17,7 @@
 "KPHR-FP": "{^ ^}){^}",
 "KPH-FP": "{^}){^}",
 "KPH-FPG": "{^}(){^}",
+"KPAS": "{:retro_case:capPrev}",
 "KWHR-FRP": "{^ ^}>",
 "KWHR-FRB": "{^ ^}\\}",
 "KWHR-FP": "{^ ^}>{^}",
