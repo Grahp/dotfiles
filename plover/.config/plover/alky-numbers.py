@@ -7,7 +7,13 @@ NUMBER_KEY = "#"
 STARTERS = {
     "#TPH": "",
     "#P": "0.",
-    "#TK": "$"
+    "#TK": "$",
+    "#STK": "S$",
+    "#TKEU": "€",
+    "#TKPW": "₿",
+    "#TKP": "£",
+    "#TKRU": "CN¥",
+    "#TKRE": "JP¥",
 }
 
 NUMPAD_1 = {
