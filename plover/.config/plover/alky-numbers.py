@@ -48,7 +48,7 @@ def lookup(CHORD: tuple[str]):
     if NUMBER_KEY not in STROKE:
         raise KeyError
 
-    MATCH = re.fullmatch(r'(#?S?T?K?P?W?H?R?)(A?O?E?U?)([-*]?)([FRPB]*)([LGTS]*)', STROKE)
+    MATCH = re.fullmatch(r'(\#?S?T?K?P?W?H?R?)(A?O?E?U?)([-*]?)([FRPB]*)([LGTS]*)', STROKE)
     if MATCH is None:
         raise KeyError
 
