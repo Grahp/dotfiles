@@ -51,9 +51,17 @@ def lookup(CHORD: tuple[str]):
     if MATCH is None:
         raise KeyError
 
-    (LEFT_HAND, VOWELS, SEPERATOR, GROUP_NUMPAD_0, GROUP_NUMPAD_1) = MATCH.groups()
+    (LEFT_HAND, VOWELS, SEPERATOR, GROUP_NUMPAD_1, GROUP_NUMPAD_2) = MATCH.groups()
 
+
+    output = ""
     if UNFORMATTED_NUMBER in STROKE:
-        if GROUP_NUMPAD_0 in NUMPAD_1:
-            return NUMPAD_1[GROUP_NUMPAD_0]
+        if GROUP_NUMPAD_1 in NUMPAD_1:
+            output = NUMPAD_1[GROUP_NUMPAD_1]
+            if GROUP_NUMPAD_2 is '':
+                output += '0'
+        if GROUP_NUMPAD_2 is not '':
+            output += NUMPAD_2[GROUP_NUMPAD_2]
+
+    return output
 
