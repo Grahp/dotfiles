@@ -64,7 +64,7 @@ def lookup(CHORD: tuple[str]):
         output = ""
 
     if GROUP_NUMPAD_1 in NUMPAD_1:
-        output = NUMPAD_1[GROUP_NUMPAD_1]
+        output += NUMPAD_1[GROUP_NUMPAD_1]
         if GROUP_NUMPAD_2 is '':
             output += '0'
     if GROUP_NUMPAD_2 is not '':
