@@ -7,6 +7,7 @@ NUMBER_KEY = "#"
 STARTERS = {
     "#TPH": "",
     "#P": "0.",
+    "#SP": "{^}.",
     "#TK": "$",
     "#STK": "S$",
     "#TKEU": "€",
@@ -40,6 +41,13 @@ NUMPAD_2 = {
     "G" : "7",
     "GS" : "8",
     "S" : "9"
+}
+
+VOWELS_NUMBERS = {
+    "E": "0",
+    "U": "00",
+    "EU": ",000",
+    "AEU": "000"
 }
 
 
@@ -79,6 +87,9 @@ def lookup(CHORD: tuple[str]):
             output += '0'
     if GROUP_NUMPAD_2 is not '':
         output += NUMPAD_2[GROUP_NUMPAD_2]
+
+    if VOWELS in VOWELS_NUMBERS:
+        output += VOWELS_NUMBERS[VOWELS]
 
     return output
 
