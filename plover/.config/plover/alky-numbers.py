@@ -3,7 +3,8 @@ import re, os
 LONGEST_KEY = 1
 
 NUMBER_KEY = "#"
-UNFORMATTED_NUMBER = "#TPH"
+NUMBER_STROKE = "#TPH"
+PERIOD_NUMBER_STROKE = "#P"
 
 NUMPAD_1 = {
     "E" : "0",
@@ -36,7 +37,7 @@ def write_to_fileIO(FILE_PATH: str, CONTENT: str):
     with open(FILE_PATH, 'w') as FILE:
         _ = FILE.write(CONTENT)
 
-def qw(CONTENT: str):
+def qwIO(CONTENT: str):
     FILE_PATH = os.path.join("/home/grahp/.config/plover/", "vim_log.txt")
     write_to_fileIO(FILE_PATH, CONTENT)
 
@@ -55,13 +56,19 @@ def lookup(CHORD: tuple[str]):
 
 
     output = ""
-    if UNFORMATTED_NUMBER in STROKE:
-        if GROUP_NUMPAD_1 in NUMPAD_1:
-            output = NUMPAD_1[GROUP_NUMPAD_1]
-            if GROUP_NUMPAD_2 is '':
-                output += '0'
-        if GROUP_NUMPAD_2 is not '':
-            output += NUMPAD_2[GROUP_NUMPAD_2]
+
+    # Prefixes
+    if PERIOD_NUMBER_STROKE in LEFT_HAND:
+        output = "0."
+    elif NUMBER_STROKE in LEFT_HAND:
+        output = ""
+
+    if GROUP_NUMPAD_1 in NUMPAD_1:
+        output = NUMPAD_1[GROUP_NUMPAD_1]
+        if GROUP_NUMPAD_2 is '':
+            output += '0'
+    if GROUP_NUMPAD_2 is not '':
+        output += NUMPAD_2[GROUP_NUMPAD_2]
 
     return output
 
