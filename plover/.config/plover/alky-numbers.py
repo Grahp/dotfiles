@@ -1,6 +1,7 @@
 import re, os
 LONGEST_KEY = 2
 
+FLIP_NUMPAD = True
 NUMBER_KEY = "#"
 CLOCK_AM = "#KHR"
 CLOCK_PM = "#KWHR"
@@ -23,7 +24,35 @@ PREFIX_DECORATION = {
     "#KHR*": "#:## AM" # 500 -> 5:00 PM
 }
 
+
 NUMPAD_1 = {
+    "E" : "0",
+    "F" : "1",
+    "FP" : "2",
+    "P" : "3",
+    "FR" : "4",
+    "FRPB" : "5",
+    "PB" : "6",
+    "R" : "1",
+    "RB" : "2",
+    "B" : "3"
+}
+
+NUMPAD_2 = {
+    "U" : "0",
+    "L" : "1",
+    "LT" : "2",
+    "T" : "3",
+    "LG" : "4",
+    "LGTS" : "5",
+    "TS" : "6",
+    "G" : "7",
+    "GS" : "8",
+    "S" : "9"
+}
+
+
+FLIPPED_NUMPAD_1 = {
     "E" : "0",
     "F" : "1",
     "FP" : "2",
@@ -36,7 +65,7 @@ NUMPAD_1 = {
     "B" : "9"
 }
 
-NUMPAD_2 = {
+FLIPPED_NUMPAD_2 = {
     "U" : "0",
     "L" : "1",
     "LT" : "2",
@@ -95,6 +124,10 @@ def lookup(CHORD: tuple[str]) -> str:
                 left_hand += "*"
             if STARTER in left_hand:
                 output += PREFIX_STARTERS[STARTER]
+
+        if FLIP_NUMPAD:
+            NUMPAD_1 = FLIPPED_NUMPAD_1
+            NUMPAD_2 = FLIPPED_NUMPAD_2
 
         # Numpad Nonsense
         if GROUP_NUMPAD_1 in NUMPAD_1:
