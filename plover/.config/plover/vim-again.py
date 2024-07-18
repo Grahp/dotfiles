@@ -79,8 +79,11 @@ vim_mode = False
 
 def lookup(CHORD: tuple[str]):
     STROKE = CHORD[0]
+
     global vim_mode
     add_escape = False
+    if STROKE in NORMAL_OVERRIDES and not vim_mode:
+        return NORMAL_OVERRIDES[STROKE]
 
     if MOTION_STARTER in STROKE:
         vim_mode = True
