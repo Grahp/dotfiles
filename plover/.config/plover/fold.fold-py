@@ -10,6 +10,7 @@ rules: list[f.Lookup] = [
     # Allows the `-R` key to be included in the last stroke to append "{^er}".
     # E.g., `SHEURPL` => `shim {^er}` ("shimmer")
     f.when(f.last_stroke.folds("-R")).then(f.suffix_translation(" {^er}")),
+    f.when(f.last_stroke.folds("-L")).then(f.suffix_translation(" {^ly}")),
 
     f.when(f.last_stroke.folds("*D")).then(f.suffix_translation("{^y}")),
 
