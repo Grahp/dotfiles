@@ -134,6 +134,7 @@ ender_letter={
     #PZ for h?
 
     "B":"b",
+    "*B":"w",
     "BG":"k",
     "BGS":"x",
     "*BGT":"ckt",
