@@ -10,6 +10,6 @@ else
     if [ "$session_exists" -eq 0 ]; then
         tmux popup -w 80% -h 80% -E "tmux new-session -s $popup_session -c '#{pane_current_path}'\; set-option -g status off"
     else
-        tmux popup -w 80% -h 80% -E "tmux attach-session -t $popup_session"
+        tmux popup -w 80% -h 80% -E "tmux attach-session -t $popup_session\; set-option -g status off"
     fi
 fi

@@ -1,0 +1,56 @@
+unmapAll
+map O Vomnibar.activate
+map o Vomnibar.activateInNewTab
+
+map t scrollPageDown
+map n scrollPageUp
+
+map T scrollDown
+map N scrollUp
+
+map gt scrollToBottom
+map gn scrollToTop
+
+map E Vomnibar.activateTabs
+
+map u LinkHints.activate
+map U LinkHints.activateOpenInNewTab
+map e LinkHints.activateOpenInNewForegroundTab
+map ge LinkHints.activateWithQueue
+
+map h previousTab
+map s nextTab
+map H goBack
+map S goForward
+
+map ? showHelp
+
+map / enterFindMode
+map c performFind
+map C performBackwardsFind
+
+map a removeTab
+map A restoreTab
+
+map r reload
+
+map v enterVisualMode
+map V enterVisualLineMode
+
+map m Marks.activateCreate
+map M Marks.activate
+
+map _ firstTab
+map $ lastTab
+
+map zi zoomIn
+map zo zoomOut
+
+map d Vomnibar.activateEditUrlInNewTab
+map D Vomnibar.activateEditUrl
+
+map . goNext
+map , goPrevious
+
+map b Vomnibar.activateBookmarksInNewTab
+map B Vomnibar.activateBookmarks

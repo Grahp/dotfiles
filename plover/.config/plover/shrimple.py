@@ -94,15 +94,13 @@ vowels={
 
 
 ender_letter={
-        # sic
-        # lve
     "":"",
     "*":"", #asterisk on its own is invalid
     "*FRPB":"nch",
-    "*FT":"ft",
     "*PBG":"nk",
     "*PZ":"h",
     "PS":"h",
+    "*B":"w",
     "*BG":"ck",
     "*LG":"lk",
     "*T":"th",
@@ -123,11 +121,11 @@ ender_letter={
     "FP":"ch",
     "*FP":"tch",
     "FB":"v",
-    "FT":"st",
+    "FT":"ft",
 
     "R":"r", 
-    "RB":"sh", #unless AU to make it rb carb barb
-    "*RB":"rb", #unless AU to make it rb carb barb
+    "RB":"sh",
+    "*RB":"rb",
 
     "P":"p",
     "PB":"n",
@@ -147,7 +145,7 @@ ender_letter={
 
     "G":"g",
     "GT":"xt",
-    "*GT":"gt",
+    "*GT":"ght",
     "GS":"tion", #Pretty English biased
 
     "T":"t",
@@ -170,7 +168,6 @@ strokes_you_can_use_to_exit_shrimple_with=[
     #punctuation
     "TK-LS",    #no space Test 
     "S-P",      #space
-    ""
     "KPA",      #caps
     "KPA*",     #caps no space
     "R-R",      #enter

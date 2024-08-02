@@ -20,6 +20,7 @@ starter_letter={
     "SKHR": "shr",
     "^SHR": "shr",
     "^SKR":"scr",
+    "^SKH":"sch",
     "SH" : "sh",
     "SR" : "v",
 
@@ -30,6 +31,8 @@ starter_letter={
     "^TKR":"tc",
     "TP": "f",
     "TPH": "n",
+    "THR": "thr",
+    "THR^": "tl",
     "TPHR": "fl",
     "^TPHR": "tpl",
     "^TKPH": "kn",
@@ -62,14 +65,17 @@ starter_letter={
 
 
 vowels={
+    # oa
+    # ui
+    # add e to the of any word?
     "-":"",
     
     "":"",
 
     "*":"",
-    "^A":"u",
-    "^AO":"i",
-    "^O":"e",
+    # "^A":"u",
+    # "^AO":"i",
+    # "^O":"e",
 
 
     "A"   :"a",
@@ -94,10 +100,17 @@ vowels={
 
 
 ender_letter={
+    # Z - ^s
+    # *Z - z
+    # sic
+    # c
+    # lf
+    # lv
+    # pp
     "":"",
     "*":"", #asterisk on its own is invalid
     "*FRPB":"nch",
-    "*FT":"ft",
+    "FT":"ft",
     "*PBG":"nk",
     "*PZ":"h",
     "PS":"h",
@@ -106,11 +119,13 @@ ender_letter={
     "*T":"th",
     "*S":"st",
     "*SZ":"c",
+    "SZ":"se",
     "*D":"y",
     "*DZ":"ye",
     "*Z":"z",
 
     "F":"f",
+    "*F":"ff",
     "FRP":"mp",
     "FRPB":"rch",
     "FRPL":"mpl",
@@ -120,10 +135,11 @@ ender_letter={
     "FP":"ch",
     "*FP":"tch",
     "FB":"v",
-    "FT":"st",
+    # "FT":"st",
 
     "R":"r", 
-    "RB":"sh", #unless AU to make it rb carb barb
+    "RB":"sh",
+    "*RB":"rb",
 
     "P":"p",
     "PB":"n",
@@ -143,8 +159,10 @@ ender_letter={
     "*L":"ll",
 
     "G":"g",
+    "*G":"gg",
     "GT":"xt",
-    "*GT":"gt",
+    "*GT":"ght",
+    "*BGT":"ckt",
     "GS":"tion", #Pretty English biased
 
     "T":"t",
@@ -168,6 +186,9 @@ strokes_you_can_use_to_exit_shrimple_with=[
     "TK-LS",    #no space
     "S-P",      #space
     "KPA",      #caps
+    "-FPL",      #caps
+    "-RBG",      #caps
+    "*RBG",      #caps
     "KPA*",     #caps no space
     "R-R",      #enter
     "TP-PL",    #.
@@ -438,6 +459,7 @@ def lookup(strokes):
         if stroke in strokes_you_can_use_to_exit_shrimple_with:
             raise KeyError
 
+
         match = re.fullmatch(r'(#?\^?S?T?K?P?W?H?R?)(A?O?)(\*?\-?E?U?)(F?R?P?B?L?G?T?S?D?Z?)', stroke.replace(dedicated_key,""))
         if match:
 
@@ -472,6 +494,8 @@ def lookup(strokes):
         match= re.fullmatch(
             #dissect the string to starter_letters, vowels and ender_letters
             r'\+?(#?)(\^?S?T?K?P?W?H?R?)(A?O?\*?\-?E?U?)(F?R?P?B?L?G?T?S?D?Z?)',
+
+
 
             #this string:
             aericks_denumberizer(strokes[stroke_number].replace(dedicated_key,"")))
@@ -514,6 +538,10 @@ def lookup(strokes):
 
 
 
+    if '-R' in strokes:
+        exit_strokes = strokes + ('{}',)
+        return exit_strokes
+
 
     if strokes[0] == startercap:
         return output_string.capitalize()
@@ -521,6 +549,10 @@ def lookup(strokes):
         return output_string.upper()
     if strokes[0] == starterattached:
         return "{^^}"+output_string
+    # for stroke in strokes:
+    #     if stroke == '^':
+    #         del stroke
+
     return output_string
 
 

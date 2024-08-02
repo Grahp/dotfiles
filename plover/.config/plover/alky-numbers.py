@@ -25,7 +25,7 @@ PREFIX_DECORATION = {
 }
 
 
-NUMPAD_1 = {
+REGULAR_NUMPAD_1 = {
     "E" : "0",
     "F" : "1",
     "FP" : "2",
@@ -38,7 +38,7 @@ NUMPAD_1 = {
     "B" : "3"
 }
 
-NUMPAD_2 = {
+REGULAR_NUMPAD_2 = {
     "U" : "0",
     "L" : "1",
     "LT" : "2",
@@ -125,9 +125,8 @@ def lookup(CHORD: tuple[str]) -> str:
             if STARTER in left_hand:
                 output += PREFIX_STARTERS[STARTER]
 
-        if FLIP_NUMPAD:
-            NUMPAD_1 = FLIPPED_NUMPAD_1
-            NUMPAD_2 = FLIPPED_NUMPAD_2
+        NUMPAD_1 = FLIPPED_NUMPAD_1 if FLIP_NUMPAD else REGULAR_NUMPAD_1
+        NUMPAD_2 = FLIPPED_NUMPAD_2 if FLIP_NUMPAD else REGULAR_NUMPAD_2
 
         # Numpad Nonsense
         if GROUP_NUMPAD_1 in NUMPAD_1:

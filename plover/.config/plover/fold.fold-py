@@ -5,18 +5,27 @@ rules: list[f.Lookup] = [
     # E.g., `#KAP/TAL` => `{-|}capital` ("Capital")
     f.when(f.first_stroke.folds("#")).then(f.prefix_translation("{-|}")),
 
-    f.when(f.first_stroke.folds("^")).then(f.prefix_translation("=retro_everything:,{^~|^}")),
+    f.when(f.first_stroke.folds("^")).then(f.prefix_translation("{^}")),
+
+    # Allows the substrokes `-GS` or `-GZ` to be included in the last stroke to append "{^ings}".
+    # E.g., `WAUFPGS` => `watchings`
+    f.when(f.last_stroke.folds("-S", "-Z")).then(f.suffix_translation("{^s}")),
+    f.when(f.last_stroke.folds("-D")).then(f.suffix_translation("{^ed}")),
+    f.when(f.last_stroke.folds("-G")).then(f.suffix_translation("{^ing}")),
 
     # Allows the `-R` key to be included in the last stroke to append "{^er}".
     # E.g., `SHEURPL` => `shim {^er}` ("shimmer")
     f.when(f.last_stroke.folds("-R")).then(f.suffix_translation(" {^er}")),
     f.when(f.last_stroke.folds("-L")).then(f.suffix_translation(" {^ly}")),
+    f.when(f.last_stroke.folds("-BL")).then(f.suffix_translation(" {^able}")),
+    f.when(f.last_stroke.folds("-LS")).then(f.suffix_translation("{^less}")),
+    f.when(f.last_stroke.folds("-PLT")).then(f.suffix_translation("{^ment}")),
+    f.when(f.last_stroke.folds("-PBLS")).then(f.suffix_translation("{^lessness}")),
+    f.when(f.last_stroke.folds("-PBS")).then(f.suffix_translation("{^ness}")),
+    f.when(f.last_stroke.folds("-EBL")).then(f.suffix_translation("{^able}{^y}")),
 
     f.when(f.last_stroke.folds("*D")).then(f.suffix_translation("{^y}")),
 
-    # Allows the substrokes `-GS` or `-GZ` to be included in the last stroke to append "{^ings}".
-    # E.g., `WAUFPGS` => `watchings`
-    f.when(f.last_stroke.folds("-GS", "-GZ")).then(f.suffix_translation(" {^ings}")),
 ]
 
 # Optional. The maximum length of the outline to check these folding rules for.
