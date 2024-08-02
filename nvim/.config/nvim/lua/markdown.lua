@@ -90,7 +90,7 @@ function get_time()
     return os.date('%I:%M %p'):gsub('^0', '')
 end
 
-function new_checkbox() 
+function new_checkbox()
     vim.fn.feedkeys('o- [ ] ')
 end
 

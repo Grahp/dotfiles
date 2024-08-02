@@ -1,0 +1,37 @@
+unmapAll
+
+map but scrollPageUp
+map But scrollPageUp
+map <space>but scrollPageUp
+map <space>But scrollPageUp
+map be scrollPageDown
+map Be scrollPageDown
+map <space>be scrollPageDown
+map <space>Be scrollPageDown
+
+map up scrollUp
+map Up scrollUp
+map <space>up scrollUp
+map <space>Up scrollUp
+map you<space>be scrollDown
+map You<space>Be scrollDown
+map <space>you<space>be scrollDown
+map <space>You<space>be scrollDown
+
+map er previousTab
+map Er previousTab
+map ing nextTab
+map Ing nextTab
+map eer goBack
+map Eer goBack
+map <space>eer goBack
+map <space>Eer goBack
+map youing goForward
+map Youing goForward
+map <space>youing goForward
+map <space>Youing goForward
+
+map / enterFindMode
+map <space>/ enterFindMode
+map <space>in performFind
+map <space>In performFind

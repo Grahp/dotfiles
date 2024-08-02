@@ -44,36 +44,36 @@ vim.opt.breakindent = true
 
 vim.cmd([[hi TreesitterContextBottom none]])
 
-function file_rules()
-
-	 local file_name = vim.fn.expand('%:t')
-
-     local function markdown()
-		 vim.opt.wrap = true
-		 vim.opt.linebreak = true
-         require('cmp').setup.buffer { enabled = false }
-     end
-
-	 if file_name:match('%.md$') then
-         markdown()
-	 end
-
-	 if file_name:match('%.txt$') then
-         markdown()
-	 end
-
-	 if file_name:match('%.qz$') then
-         markdown()
-	 end
-end
-
--- Autocomand to trigger file_rules
-vim.api.nvim_exec([[
-	augroup MyAutoCommands
-		autocmd!
-		autocmd BufReadPost * lua file_rules()
-	augroup END
-]], false)
+-- function file_rules()
+--
+-- 	 local file_name = vim.fn.expand('%:t')
+--
+--      local function markdown()
+-- 		 vim.opt.wrap = true
+-- 		 vim.opt.linebreak = true
+--          require('cmp').setup.buffer { enabled = false }
+--      end
+--
+-- 	 if file_name:match('%.md$') then
+--          markdown()
+-- 	 end
+--
+-- 	 if file_name:match('%.txt$') then
+--          markdown()
+-- 	 end
+--
+-- 	 if file_name:match('%.qz$') then
+--          markdown()
+-- 	 end
+-- end
+--
+-- -- Autocomand to trigger file_rules
+-- vim.api.nvim_exec([[
+-- 	augroup MyAutoCommands
+-- 		autocmd!
+-- 		autocmd BufReadPost * lua file_rules()
+-- 	augroup END
+-- ]], false)
 
 vim.api.nvim_exec([[augroup highlight_yank
     autocmd!

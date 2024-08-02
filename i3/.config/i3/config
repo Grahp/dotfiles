@@ -36,7 +36,7 @@ bindsym $mod+q kill
 bindsym $mod+e exec rofi -show drun
 
 # bindsym $mod+o exec "i3lock --insidever-color='#ffffff00' --ringver-color='#bb00bbbb' --insidewrong-color='#ffffff00' --ringwrong-color='#f00000ff' --inside-color='#00000000' --ring-color='#ff00ffff' --line-color='#00000000' --separator-color='#ff00ffff' --verif-color='#ee00eeff' --wrong-color='#ee00eeff' --time-color='#ee00eeff' --date-color='#ee00eeff' --layout-color='#ee00eeff' --keyhl-color='#f00000ff' --bshl-color='#f00000ff' --screen 2 --blur 7 --clock --indicator --time-str='%-I:%M %p' --date-str='%A, %B %d'"
-bindsym $mod+o exec "i3lock --insidever-color='#ffffff00' --ringver-color='#bb00bbbb' --insidewrong-color='#ffffff00' --ringwrong-color='#f00000ff' --inside-color='#00000000' --ring-color='#ff00ffff' --line-color='#00000000' --separator-color='#ff00ffff' --verif-color='#ee00eeff' --wrong-color='#ee00eeff' --time-color='#ee00eeff' --date-color='#ee00eeff' --layout-color='#ee00eeff' --keyhl-color='#f00000ff' --bshl-color='#f00000ff' --blur 7
+bindsym $mod+o exec "i3lock --insidever-color='#ffffff00' --ringver-color='#bb00bbbb' --insidewrong-color='#ffffff00' --ringwrong-color='#f00000ff' --inside-color='#00000000' --ring-color='#ff00ffff' --line-color='#00000000' --separator-color='#ff00ffff' --verif-color='#ee00eeff' --wrong-color='#ee00eeff' --time-color='#ee00eeff' --date-color='#ee00eeff' --layout-color='#ee00eeff' --keyhl-color='#f00000ff' --bshl-color='#f00000ff' --screen 1 -c 000000ff
 
 # Change Focus
 bindsym $mod+h focus left
@@ -95,8 +95,8 @@ bindsym $mod+r restart
 # Enter Edit Mode
 bindsym $mod+p mode "Edit"
 
-bindsym $mod+Ctrl+greater move workspace to output right
-bindsym $mod+Ctrl+less move workspace to output left
+bindsym $mod+v move workspace to output left
+bindsym $mod+z move workspace to output right
 
 # Dunst
 

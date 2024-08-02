@@ -4,8 +4,8 @@ Key considerations were that it wasn't tailored for English, as this is mostly f
 
 """
 
-starternormal = 'STK'           #shrimple with normal formatting
 starterattached='STKR'          #shrimple with not space at the start
+starternormal = 'STK'           #shrimple with normal formatting
 startercap    = 'SHR*EUFRPL'    #shrimple but capped the first letter
 acronyms      = 'KAPS'          #shrimple but all caps
 dedicated_key = '🦐'             #Instead of a starter stroke
@@ -97,10 +97,10 @@ ender_letter={
     "":"",
     "*":"", #asterisk on its own is invalid
     "*FRPB":"nch",
-    "*FT":"ft",
     "*PBG":"nk",
     "*PZ":"h",
     "PS":"h",
+    "*B":"w",
     "*BG":"ck",
     "*LG":"lk",
     "*T":"th",
@@ -110,6 +110,7 @@ ender_letter={
     "*DZ":"ye",
     "*Z":"z",
 
+    "*F":"ff",
     "F":"f",
     "FRP":"mp",
     "FRPB":"rch",
@@ -120,10 +121,11 @@ ender_letter={
     "FP":"ch",
     "*FP":"tch",
     "FB":"v",
-    "FT":"st",
+    "FT":"ft",
 
     "R":"r", 
-    "RB":"sh", #unless AU to make it rb carb barb
+    "RB":"sh",
+    "*RB":"rb",
 
     "P":"p",
     "PB":"n",
@@ -143,7 +145,7 @@ ender_letter={
 
     "G":"g",
     "GT":"xt",
-    "*GT":"gt",
+    "*GT":"ght",
     "GS":"tion", #Pretty English biased
 
     "T":"t",
@@ -164,7 +166,7 @@ ender_letter={
 strokes_you_can_use_to_exit_shrimple_with=[
 
     #punctuation
-    "TK-LS",    #no space
+    "TK-LS",    #no space Test 
     "S-P",      #space
     "KPA",      #caps
     "KPA*",     #caps no space
@@ -391,7 +393,7 @@ numbers_to_letters = {
     "8": "L",
     "9": "T",
     "0": "O"
-    }
+}
 
 def aericks_denumberizer(old_outline):
 

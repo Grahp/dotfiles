@@ -2,7 +2,8 @@ return {
     {
         'williamboman/mason.nvim',
         dependencies = {
-            'williamboman/mason-lspconfig.nvim'
+            'williamboman/mason-lspconfig.nvim',
+            'WhoIsSethDaniel/mason-tool-installer.nvim'
         },
         config = function ()
 
@@ -10,13 +11,33 @@ return {
 
             })
 
+            require('mason-tool-installer').setup({
+                ensure_installed = {
+                    'java-debug-adapter',
+                    'java-test'
+                }
+            })
+
+            vim.api.nvim_command('MasonToolsInstall')
+
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     'lua_ls',
-                    'basedpyright'
+                    'basedpyright',
+                    'jdtls',
+                    'clojure_lsp',
                 },
                 automatic_installation = true,
             })
+
+            -- require('mason-lspconfig').setup_handlers({
+            --     function(server_name)
+            --         lspconfig[server_name].setup({
+            --             on_attach = lsp_attach,
+            --             capabilities = capabilities
+            --         })
+            --     end
+            -- })
 
         end
     },
@@ -33,7 +54,6 @@ return {
 
             -- local signs = { Error = ' ', Warn = ' ', Hint = " ", Info = ' ' }
 
-            ---@diagnostic disable-next-line: unused-local
             local on_attach = function(client, bufnr)
                 local opts = {}
                 opts.buffer = bufnr
@@ -44,8 +64,12 @@ return {
                 vim.keymap.set('n', '<Leader>c', vim.lsp.buf.code_action, opts)
             end
 
+
+            vim.lsp.set_log_level("debug")
+
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
+                on_attach = on_attach,
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -57,6 +81,16 @@ return {
             lspconfig.omnisharp.setup({
                 capabilities = capabilities,
                 on_attach = on_attach
+            })
+            lspconfig.jdtls.setup({
+                capabilities = capabilities,
+                on_attach = on_attach
+            })
+            lspconfig.clojure_lsp.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                cmd = { "clojure-lsp" },
+                filetypes = { "clojure", "clojurescript", "clojurec" }
             })
             lspconfig.basedpyright.setup({
                 capabilities = capabilities,
